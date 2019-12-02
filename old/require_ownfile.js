@@ -1,4 +1,4 @@
-const imported = require('./toimport/importme');
+const imported = require('../toimport/importme');
 
 console.log(imported.random_number);
 imported.saludo1();
