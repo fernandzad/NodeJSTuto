@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.17.1",
     "fs": "0.0.1-security",
     "https": "^1.0.0",
+    "jest": "^24.9.0",
     "lodash": "^4.17.15",
+    "node-fetch": "^2.6.0",
     "yargs": "^15.0.2"
   },
   "devDependencies": {},
