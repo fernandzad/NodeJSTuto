@@ -3,11 +3,16 @@ const app = express();
 
 // Uso de middlewares
 // los middlewares se invocan con el método use()
-let isLogged = () => true;
+let isLogged = () => false;
+
+//Definimos una función anónima para después usarla como middleware
 let logger = (request, response, next) => {
     console.log('Este es un middleware, usando use() de express');
     next();
 };
+
+//Este método de express nos permite ejecutar cierta lógica antes de procesar cualquier método de REST
+//pasamos 'logger' como parámetro para que también se ejecute en la cadena de middlewares
 app.use((request, response, next) => {
     if(isLogged())
         next();
@@ -15,20 +20,20 @@ app.use((request, response, next) => {
         response.send('No estás loggeado');
 }, logger);
 
-app.get('/:user', (req,res) => {
-    res.send(`Bienvenido ${req.params.user} `);
+app.get('/:user', (request,response) => {
+    response.send(`Bienvenido ${request.params.user} `);
 });
 
-app.post('/', (req,res) => {
-    res.send(`Hello world! ${req.method}`);
+app.post('/', (request,response) => {
+    response.send(`Hello world! ${request.method}`);
 });
 
-app.put('/', (req,res) => {
-    res.send(`Hello world! ${req.method}`);
+app.put('/', (request,response) => {
+    response.send(`Hello world! ${request.method}`);
 });
 
-app.delete('/', (req,res) => {
-    res.send(`Hello world! ${req.method}`);
+app.delete('/', (request,response) => {
+    response.send(`Hello world! ${request.method}`);
 });
 
 app.listen(3000, () => {
