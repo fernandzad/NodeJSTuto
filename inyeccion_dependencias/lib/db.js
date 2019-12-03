@@ -8,7 +8,7 @@
 
 // lib/db.js - CON INYECCION DE DEPENDENCIAS
 const level = require('level');
-const sublevel = require('level-sublevel');
+const sublevel = require('sublevel');
 
 module.exports = function(dbName){
     return sublevel(
